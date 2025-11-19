@@ -1,6 +1,138 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { useSpotlight } from '../hooks/useSpotlight';
+
+const ProjectCard = ({ project, index }) => {
+    const spotlightRef = useSpotlight();
+
+    return (
+        <motion.div
+            ref={spotlightRef}
+            key={project.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="card"
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+            }}
+        >
+            {/* Project Image */}
+            {project.image && (
+                <div style={{
+                    width: 'calc(100% + var(--spacing-lg) * 2)',
+                    height: '200px',
+                    marginTop: 'calc(var(--spacing-lg) * -1)',
+                    marginLeft: 'calc(var(--spacing-lg) * -1)',
+                    marginRight: 'calc(var(--spacing-lg) * -1)',
+                    marginBottom: 'var(--spacing-md)',
+                    overflow: 'hidden',
+                    borderRadius: 'var(--border-radius-md)',
+                    position: 'relative',
+                    background: 'transparent',
+                }}>
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            transition: 'transform var(--transition-slow)',
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                        onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.parentElement.style.display = 'none';
+                        }}
+                    />
+                </div>
+            )}
+
+            <h3 style={{
+                fontSize: 'var(--text-2xl)',
+                marginBottom: 'var(--spacing-sm)',
+                color: 'var(--color-text-primary)',
+                fontFamily: 'var(--font-display)',
+            }}>
+                {project.title}
+            </h3>
+
+            <p style={{
+                fontSize: 'var(--text-sm)',
+                color: 'var(--color-neon-purple)',
+                marginBottom: 'var(--spacing-md)',
+                fontWeight: 500,
+            }}>
+                {project.role}
+            </p>
+
+            <p style={{
+                color: 'var(--color-text-secondary)',
+                lineHeight: 1.7,
+                marginBottom: 'var(--spacing-md)',
+                flex: 1,
+            }}>
+                {project.description}
+            </p>
+
+            {/* Technologies */}
+            <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 'var(--spacing-xs)',
+                marginBottom: 'var(--spacing-md)',
+            }}>
+                {project.technologies.map((tech) => (
+                    <span
+                        key={tech}
+                        style={{
+                            padding: '0.25rem 0.75rem',
+                            background: 'rgba(59, 130, 246, 0.1)',
+                            border: '1px solid rgba(59, 130, 246, 0.3)',
+                            borderRadius: 'var(--border-radius-sm)',
+                            color: 'var(--color-neon-blue)',
+                            fontSize: 'var(--text-xs)',
+                            fontWeight: 500,
+                        }}
+                    >
+                        {tech}
+                    </span>
+                ))}
+            </div>
+
+            {/* Links */}
+            <div style={{
+                display: 'flex',
+                gap: 'var(--spacing-md)',
+                paddingTop: 'var(--spacing-md)',
+                borderTop: '1px solid rgba(168, 85, 247, 0.1)',
+            }}>
+                <a
+                    href={project.link}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 'var(--spacing-xs)',
+                        color: 'var(--color-text-secondary)',
+                        fontSize: 'var(--text-sm)',
+                        transition: 'color var(--transition-base)',
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-neon-purple)'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
+                >
+                    <ExternalLink size={16} />
+                    Ver más
+                </a>
+            </div>
+        </motion.div>
+    );
+};
 
 const Projects = () => {
     const projects = [
@@ -69,129 +201,7 @@ const Projects = () => {
                     gap: 'var(--spacing-lg)',
                 }}>
                     {projects.map((project, index) => (
-                        <motion.div
-                            key={project.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="card"
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                height: '100%',
-                            }}
-                        >
-                            {/* Project Image */}
-                            {project.image && (
-                                <div style={{
-                                    width: 'calc(100% + var(--spacing-lg) * 2)',
-                                    height: '200px',
-                                    marginTop: 'calc(var(--spacing-lg) * -1)',
-                                    marginLeft: 'calc(var(--spacing-lg) * -1)',
-                                    marginRight: 'calc(var(--spacing-lg) * -1)',
-                                    marginBottom: 'var(--spacing-md)',
-                                    overflow: 'hidden',
-                                    borderRadius: 'var(--border-radius-md)',
-                                    position: 'relative',
-                                    background: 'transparent',
-                                }}>
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            transition: 'transform var(--transition-slow)',
-                                        }}
-                                        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                                        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                                        onError={(e) => {
-                                            e.currentTarget.style.display = 'none';
-                                            e.currentTarget.parentElement.style.display = 'none';
-                                        }}
-                                    />
-                                </div>
-                            )}
-
-                            <h3 style={{
-                                fontSize: 'var(--text-2xl)',
-                                marginBottom: 'var(--spacing-sm)',
-                                color: 'var(--color-text-primary)',
-                                fontFamily: 'var(--font-display)',
-                            }}>
-                                {project.title}
-                            </h3>
-
-                            <p style={{
-                                fontSize: 'var(--text-sm)',
-                                color: 'var(--color-neon-purple)',
-                                marginBottom: 'var(--spacing-md)',
-                                fontWeight: 500,
-                            }}>
-                                {project.role}
-                            </p>
-
-                            <p style={{
-                                color: 'var(--color-text-secondary)',
-                                lineHeight: 1.7,
-                                marginBottom: 'var(--spacing-md)',
-                                flex: 1,
-                            }}>
-                                {project.description}
-                            </p>
-
-                            {/* Technologies */}
-                            <div style={{
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                gap: 'var(--spacing-xs)',
-                                marginBottom: 'var(--spacing-md)',
-                            }}>
-                                {project.technologies.map((tech) => (
-                                    <span
-                                        key={tech}
-                                        style={{
-                                            padding: '0.25rem 0.75rem',
-                                            background: 'rgba(59, 130, 246, 0.1)',
-                                            border: '1px solid rgba(59, 130, 246, 0.3)',
-                                            borderRadius: 'var(--border-radius-sm)',
-                                            color: 'var(--color-neon-blue)',
-                                            fontSize: 'var(--text-xs)',
-                                            fontWeight: 500,
-                                        }}
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-
-                            {/* Links */}
-                            <div style={{
-                                display: 'flex',
-                                gap: 'var(--spacing-md)',
-                                paddingTop: 'var(--spacing-md)',
-                                borderTop: '1px solid rgba(168, 85, 247, 0.1)',
-                            }}>
-                                <a
-                                    href={project.link}
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: 'var(--spacing-xs)',
-                                        color: 'var(--color-text-secondary)',
-                                        fontSize: 'var(--text-sm)',
-                                        transition: 'color var(--transition-base)',
-                                    }}
-                                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-neon-purple)'}
-                                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
-                                >
-                                    <ExternalLink size={16} />
-                                    Ver más
-                                </a>
-                            </div>
-                        </motion.div>
+                        <ProjectCard key={project.title} project={project} index={index} />
                     ))}
                 </div>
             </div>

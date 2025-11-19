@@ -1,6 +1,40 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Users, Target, Code } from 'lucide-react';
+import { useSpotlight } from '../hooks/useSpotlight';
+
+const HighlightCard = ({ item, index }) => {
+    const spotlightRef = useSpotlight();
+
+    return (
+        <motion.div
+            ref={spotlightRef}
+            key={item.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="card"
+        >
+            <div style={{
+                color: 'var(--color-neon-purple)',
+                marginBottom: 'var(--spacing-md)',
+            }}>
+                {item.icon}
+            </div>
+            <h3 style={{
+                fontSize: 'var(--text-xl)',
+                marginBottom: 'var(--spacing-sm)',
+                color: 'var(--color-text-primary)',
+            }}>
+                {item.title}
+            </h3>
+            <p style={{ color: 'var(--color-text-secondary)' }}>
+                {item.description}
+            </p>
+        </motion.div>
+    );
+};
 
 const About = () => {
     const highlights = [
@@ -45,31 +79,7 @@ const About = () => {
                     marginBottom: 'var(--spacing-xl)',
                 }}>
                     {highlights.map((item, index) => (
-                        <motion.div
-                            key={item.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="card"
-                        >
-                            <div style={{
-                                color: 'var(--color-neon-purple)',
-                                marginBottom: 'var(--spacing-md)',
-                            }}>
-                                {item.icon}
-                            </div>
-                            <h3 style={{
-                                fontSize: 'var(--text-xl)',
-                                marginBottom: 'var(--spacing-sm)',
-                                color: 'var(--color-text-primary)',
-                            }}>
-                                {item.title}
-                            </h3>
-                            <p style={{ color: 'var(--color-text-secondary)' }}>
-                                {item.description}
-                            </p>
-                        </motion.div>
+                        <HighlightCard key={item.title} item={item} index={index} />
                     ))}
                 </div>
 

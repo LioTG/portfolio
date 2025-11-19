@@ -18,6 +18,28 @@
   --color-neon-green-glow: rgba(16, 185, 129, 0.5);
   --color-neon-cyan: #06b6d4;
   --color-neon-cyan-glow: rgba(6, 182, 212, 0.5);
+  --color-neon-pink: #FF10F0;
+  --color-neon-pink-glow: rgba(255, 16, 240, 0.5);
+  --color-neon-hot-pink: #F535AA;
+  --color-neon-hot-pink-glow: rgba(245, 53, 170, 0.5);
+  --color-neon-magenta: #FF00FF;
+  --color-neon-magenta-glow: rgba(255, 0, 255, 0.5);
+  --color-neon-red: #FF073A;
+  --color-neon-red-glow: rgba(255, 7, 58, 0.5);
+  --color-neon-orange: #FF5F1F;
+  --color-neon-orange-glow: rgba(255, 95, 31, 0.5);
+  --color-neon-yellow: #EFFD5F;
+  --color-neon-yellow-glow: rgba(239, 253, 95, 0.5);
+  --color-neon-lime: #39FF14;
+  --color-neon-lime-glow: rgba(57, 255, 20, 0.5);
+  --color-neon-sky-blue: #7DF9FF;
+  --color-neon-sky-blue-glow: rgba(125, 249, 255, 0.5);
+  --color-neon-deep-blue: #0000FF;
+  --color-neon-deep-blue-glow: rgba(0, 0, 255, 0.5);
+  --color-neon-indigo: #4B0082;
+  --color-neon-indigo-glow: rgba(75, 0, 130, 0.5);
+  --color-neon-white: #FFFFFF;
+  --color-neon-white-glow: rgba(255, 255, 255, 0.7);
 
   /* Text Colors */
   --color-text-primary: #f8fafc;
@@ -314,13 +336,18 @@ a:hover {
   overflow: hidden;
 }
 
+/* Mouse-tracking spotlight effect */
 .card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, var(--color-neon-purple-glow), transparent 70%);
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      var(--color-neon-purple-glow),
+      transparent 40%);
   opacity: 0;
   transition: opacity var(--transition-base);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .card:hover {
@@ -337,6 +364,17 @@ a:hover {
 .card>* {
   position: relative;
   z-index: 1;
+}
+
+/* Rotating border animation */
+@keyframes rotate-border {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===== ANIMATIONS ===== */

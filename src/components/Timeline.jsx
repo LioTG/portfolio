@@ -1,52 +1,156 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Award, Code, Briefcase } from 'lucide-react';
+import { useSpotlight } from '../hooks/useSpotlight';
+
+const TimelineEventCard = ({ event, index }) => {
+    const spotlightRef = useSpotlight();
+
+    return (
+        <motion.div
+            key={index}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            style={{
+                display: 'flex',
+                justifyContent: index % 2 === 0 ? 'flex-start' : 'flex-end',
+                marginBottom: 'var(--spacing-xl)',
+                position: 'relative',
+            }}
+        >
+            <div
+                ref={spotlightRef}
+                className="card"
+                style={{
+                    width: 'calc(50% - var(--spacing-xl))',
+                    position: 'relative',
+                }}
+            >
+                {/* Date Badge */}
+                <div style={{
+                    display: 'inline-block',
+                    background: event.date === 'Actualidad'
+                        ? 'linear-gradient(135deg, #10b981, #059669)' // Verde brillante para Actualidad
+                        : event.type === 'education'
+                            ? 'var(--gradient-primary)'
+                            : 'var(--gradient-secondary)',
+                    color: 'white',
+                    padding: 'var(--spacing-xs) var(--spacing-lg)',
+                    borderRadius: 'var(--border-radius-full)',
+                    fontSize: 'var(--text-base)',
+                    fontWeight: 800,
+                    fontFamily: 'var(--font-display)',
+                    marginBottom: 'var(--spacing-md)',
+                    boxShadow: event.date === 'Actualidad'
+                        ? '0 4px 20px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.3)'
+                        : '0 4px 20px rgba(168, 85, 247, 0.3)',
+                    animation: event.date === 'Actualidad' ? 'pulse 2s ease-in-out infinite' : 'none',
+                }}>
+                    {event.date}
+                </div>
+
+                {/* Title with Icon */}
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--spacing-sm)',
+                    marginBottom: 'var(--spacing-sm)',
+                }}>
+                    <div style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '50%',
+                        background: 'var(--color-bg-secondary)',
+                        border: '2px solid var(--color-neon-purple)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'var(--color-neon-purple)',
+                        flexShrink: 0,
+                    }}>
+                        {event.icon}
+                    </div>
+                    <h3 style={{
+                        fontSize: 'var(--text-xl)',
+                        margin: 0,
+                        color: 'var(--color-text-primary)',
+                        fontFamily: 'var(--font-display)',
+                    }}>
+                        {event.title}
+                    </h3>
+                </div>
+
+                <p style={{
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 1.7,
+                }}>
+                    {event.description}
+                </p>
+            </div>
+        </motion.div>
+    );
+};
 
 const Timeline = () => {
     const timelineEvents = [
         {
+            date: 'Actualidad',
             year: '2025',
+            month: 'Actual',
             title: 'UPC - 4to Ciclo',
             description: 'Avanzando en Ingeniería de Software con enfoque en desarrollo de videojuegos y UX/UI',
             icon: <Calendar size={24} />,
             type: 'education',
         },
         {
-            year: '2024',
-            title: 'Ultimate PC Simulator',
-            description: 'Desarrollo del simulador de construcción de PCs en Unity 2D para Android',
-            icon: <Code size={24} />,
-            type: 'project',
-        },
-        {
-            year: '2024',
-            title: 'Urban Safe & ChessAssistant',
-            description: 'Proyectos de IHC y desarrollo web con énfasis en UX/UI',
-            icon: <Briefcase size={24} />,
-            type: 'project',
-        },
-        {
+            date: 'Julio 2025',
             year: '2025',
+            month: 'Ene',
             title: 'Build A PC - Roblox',
             description: 'Juego educativo en Roblox usando Lua Script',
             icon: <Code size={24} />,
             type: 'project',
         },
         {
-            year: '2023',
-            title: 'SysmicControl & CollabSpace',
-            description: 'Sistemas de control IoT y plataformas colaborativas',
+            date: 'Octubre - Diciembre 2025',
+            year: '2024',
+            month: 'Sep',
+            title: 'Urban Safe',
+            description: 'Proyecto de IHC y desarrollo web con énfasis en UX/UI',
             icon: <Briefcase size={24} />,
             type: 'project',
         },
         {
+            date: 'Noviembre 2024 - Actualidad',
             year: '2024',
+            month: 'Nov',
+            title: 'Ultimate PC Simulator',
+            description: 'Desarrollo del simulador de construcción de PCs en Unity 2D para Android',
+            icon: <Code size={24} />,
+            type: 'project',
+        },
+        {
+            date: 'Marzo 2024',
+            year: '2024',
+            month: 'Mar',
             title: 'Inicio en UPC',
             description: 'Comienzo de estudios en Ingeniería de Software',
             icon: <Award size={24} />,
             type: 'education',
         },
+        {
+            date: 'Agosto 2022 - Actualidad',
+            year: '2022',
+            month: 'Ago',
+            title: 'L-Shop Bot',
+            description: 'Bot de Discord con sistema de tienda, economía virtual y administración personalizada',
+            icon: <Code size={24} />,
+            type: 'project',
+        },
     ];
+
 
     return (
         <section id="timeline" className="section" style={{ background: 'var(--color-bg-primary)' }}>
@@ -77,87 +181,22 @@ const Timeline = () => {
                     }} />
 
                     {timelineEvents.map((event, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            style={{
-                                display: 'flex',
-                                justifyContent: index % 2 === 0 ? 'flex-start' : 'flex-end',
-                                marginBottom: 'var(--spacing-xl)',
-                                position: 'relative',
-                            }}
-                        >
-                            <div
-                                className="card"
-                                style={{
-                                    width: 'calc(50% - var(--spacing-xl))',
-                                    position: 'relative',
-                                }}
-                            >
-                                {/* Year Badge */}
-                                <div style={{
-                                    position: 'absolute',
-                                    top: 'var(--spacing-md)',
-                                    [index % 2 === 0 ? 'right' : 'left']: 'calc(var(--spacing-lg) * -1)',
-                                    transform: index % 2 === 0 ? 'translateX(50%)' : 'translateX(-50%)',
-                                    background: event.type === 'education'
-                                        ? 'var(--gradient-primary)'
-                                        : 'var(--gradient-secondary)',
-                                    color: 'white',
-                                    padding: 'var(--spacing-xs) var(--spacing-md)',
-                                    borderRadius: 'var(--border-radius-full)',
-                                    fontSize: 'var(--text-sm)',
-                                    fontWeight: 700,
-                                    fontFamily: 'var(--font-display)',
-                                    whiteSpace: 'nowrap',
-                                    zIndex: 2,
-                                }}>
-                                    {event.year}
-                                </div>
-
-                                {/* Icon Circle */}
-                                <div style={{
-                                    position: 'absolute',
-                                    top: 'var(--spacing-md)',
-                                    [index % 2 === 0 ? 'right' : 'left']: 'calc((50% - var(--spacing-xl)) * -1 - 20px)',
-                                    width: '40px',
-                                    height: '40px',
-                                    borderRadius: '50%',
-                                    background: 'var(--color-bg-secondary)',
-                                    border: '3px solid var(--color-neon-purple)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: 'var(--color-neon-purple)',
-                                    zIndex: 2,
-                                }}>
-                                    {event.icon}
-                                </div>
-
-                                <h3 style={{
-                                    fontSize: 'var(--text-xl)',
-                                    marginBottom: 'var(--spacing-sm)',
-                                    color: 'var(--color-text-primary)',
-                                    fontFamily: 'var(--font-display)',
-                                }}>
-                                    {event.title}
-                                </h3>
-
-                                <p style={{
-                                    color: 'var(--color-text-secondary)',
-                                    lineHeight: 1.7,
-                                }}>
-                                    {event.description}
-                                </p>
-                            </div>
-                        </motion.div>
+                        <TimelineEventCard key={index} event={event} index={index} />
                     ))}
                 </div>
 
                 <style jsx>{`
+          @keyframes pulse {
+            0%, 100% {
+              opacity: 1;
+              transform: scale(1);
+            }
+            50% {
+              opacity: 0.9;
+              transform: scale(1.02);
+            }
+          }
+
           @media (max-width: 768px) {
             .timeline-container > div {
               left: 20px !important;

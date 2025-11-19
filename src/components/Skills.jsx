@@ -1,6 +1,87 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Palette, Workflow, Cpu } from 'lucide-react';
+import { useSpotlight } from '../hooks/useSpotlight';
+
+const SkillCategoryCard = ({ category, categoryIndex }) => {
+    const spotlightRef = useSpotlight();
+
+    return (
+        <motion.div
+            ref={spotlightRef}
+            key={category.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+            className="card"
+        >
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--spacing-md)',
+                marginBottom: 'var(--spacing-lg)',
+            }}>
+                <div style={{ color: category.color }}>
+                    {category.icon}
+                </div>
+                <h3 style={{
+                    fontSize: 'var(--text-xl)',
+                    color: 'var(--color-text-primary)',
+                    fontFamily: 'var(--font-display)',
+                    margin: 0,
+                }}>
+                    {category.title}
+                </h3>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
+                {category.skills.map((skill, skillIndex) => (
+                    <div key={skill.name}>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            marginBottom: 'var(--spacing-xs)',
+                        }}>
+                            <span style={{
+                                fontSize: 'var(--text-sm)',
+                                color: 'var(--color-text-secondary)',
+                                fontWeight: 500,
+                            }}>
+                                {skill.name}
+                            </span>
+                            <span style={{
+                                fontSize: 'var(--text-sm)',
+                                color: category.color,
+                                fontWeight: 600,
+                            }}>
+                                {skill.level}%
+                            </span>
+                        </div>
+                        <div style={{
+                            height: '6px',
+                            background: 'rgba(255, 255, 255, 0.05)',
+                            borderRadius: 'var(--border-radius-full)',
+                            overflow: 'hidden',
+                        }}>
+                            <motion.div
+                                initial={{ width: 0 }}
+                                whileInView={{ width: `${skill.level}%` }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
+                                style={{
+                                    height: '100%',
+                                    background: category.color,
+                                    borderRadius: 'var(--border-radius-full)',
+                                }}
+                            />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+};
 
 const Skills = () => {
     const skillCategories = [
@@ -13,7 +94,6 @@ const Skills = () => {
                 { name: 'Unity', level: 80 },
                 { name: 'JavaScript', level: 60 },
                 { name: 'C++', level: 70 },
-                { name: 'Git', level: 80 },
             ],
         },
         {
@@ -25,19 +105,6 @@ const Skills = () => {
                 { name: 'Adobe XD', level: 90 },
                 { name: 'UI/UX Design', level: 80 },
                 { name: 'Prototyping', level: 80 },
-                { name: 'User Research', level: 75 },
-            ],
-        },
-        {
-            title: 'Metodologías',
-            icon: <Workflow size={28} />,
-            color: 'var(--color-neon-green)',
-            skills: [
-                { name: 'Scrum', level: 85 },
-                { name: 'Jira', level: 80 },
-                { name: 'Lean UX', level: 75 },
-                { name: 'C4 Model', level: 70 },
-                { name: 'Agile', level: 85 },
             ],
         },
         {
@@ -71,78 +138,7 @@ const Skills = () => {
                     gap: 'var(--spacing-xl)',
                 }}>
                     {skillCategories.map((category, categoryIndex) => (
-                        <motion.div
-                            key={category.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-                            className="card"
-                        >
-                            <div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: 'var(--spacing-md)',
-                                marginBottom: 'var(--spacing-lg)',
-                            }}>
-                                <div style={{ color: category.color }}>
-                                    {category.icon}
-                                </div>
-                                <h3 style={{
-                                    fontSize: 'var(--text-xl)',
-                                    color: 'var(--color-text-primary)',
-                                    fontFamily: 'var(--font-display)',
-                                    margin: 0,
-                                }}>
-                                    {category.title}
-                                </h3>
-                            </div>
-
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
-                                {category.skills.map((skill, skillIndex) => (
-                                    <div key={skill.name}>
-                                        <div style={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            marginBottom: 'var(--spacing-xs)',
-                                        }}>
-                                            <span style={{
-                                                fontSize: 'var(--text-sm)',
-                                                color: 'var(--color-text-secondary)',
-                                                fontWeight: 500,
-                                            }}>
-                                                {skill.name}
-                                            </span>
-                                            <span style={{
-                                                fontSize: 'var(--text-sm)',
-                                                color: category.color,
-                                                fontWeight: 600,
-                                            }}>
-                                                {skill.level}%
-                                            </span>
-                                        </div>
-                                        <div style={{
-                                            height: '6px',
-                                            background: 'rgba(255, 255, 255, 0.05)',
-                                            borderRadius: 'var(--border-radius-full)',
-                                            overflow: 'hidden',
-                                        }}>
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                whileInView={{ width: `${skill.level}%` }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                                                style={{
-                                                    height: '100%',
-                                                    background: category.color,
-                                                    borderRadius: 'var(--border-radius-full)',
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
+                        <SkillCategoryCard key={category.title} category={category} categoryIndex={categoryIndex} />
                     ))}
                 </div>
             </div>
