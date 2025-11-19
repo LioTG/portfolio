@@ -82,30 +82,19 @@ const Projects = () => {
                                 height: '100%',
                             }}
                         >
-                            {/* Project Header */}
-                            <div style={{
-                                height: '6px',
-                                background: project.gradient,
-                                borderRadius: 'var(--border-radius-lg) var(--border-radius-lg) 0 0',
-                                marginTop: 'calc(var(--spacing-lg) * -1)',
-                                marginLeft: 'calc(var(--spacing-lg) * -1)',
-                                marginRight: 'calc(var(--spacing-lg) * -1)',
-                                marginBottom: 'var(--spacing-md)',
-                            }} />
-
                             {/* Project Image */}
                             {project.image && (
                                 <div style={{
                                     width: 'calc(100% + var(--spacing-lg) * 2)',
                                     height: '200px',
+                                    marginTop: 'calc(var(--spacing-lg) * -1)',
                                     marginLeft: 'calc(var(--spacing-lg) * -1)',
                                     marginRight: 'calc(var(--spacing-lg) * -1)',
-                                    marginTop: 'calc(var(--spacing-md) * -1)',
                                     marginBottom: 'var(--spacing-md)',
                                     overflow: 'hidden',
                                     borderRadius: 'var(--border-radius-md)',
                                     position: 'relative',
-                                    background: 'rgba(168, 85, 247, 0.05)',
+                                    background: 'transparent',
                                 }}>
                                     <img
                                         src={project.image}
