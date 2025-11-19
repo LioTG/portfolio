@@ -40,6 +40,7 @@ const Hero = () => {
                 overflow: 'hidden',
                 background: 'var(--gradient-hero)',
                 paddingTop: '80px',
+                paddingBottom: 'var(--spacing-3xl)',
             }}
         >
             {/* 3D Background */}
@@ -159,15 +160,16 @@ const Hero = () => {
 
             {/* Scroll Indicator */}
             <motion.div
+                className="scroll-indicator"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1.5 }}
                 style={{
                     position: 'absolute',
-                    bottom: 'var(--spacing-xl)',
+                    bottom: 'var(--spacing-md)',
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    zIndex: 3,
+                    zIndex: 4,
                     cursor: 'pointer',
                 }}
                 onClick={() => scrollToSection('#about')}
@@ -200,6 +202,12 @@ const Hero = () => {
           }
           h2 {
             font-size: var(--text-xl) !important;
+          }
+        }
+
+        @media (max-height: 750px) {
+          .scroll-indicator {
+            display: none !important;
           }
         }
       `}</style>

@@ -19,6 +19,8 @@ const ProjectCard = ({ project, index }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
+                width: '100%',
+                maxWidth: '500px',
             }}
         >
             {/* Project Image */}
@@ -197,8 +199,9 @@ const Projects = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))',
                     gap: 'var(--spacing-lg)',
+                    justifyItems: 'center',
                 }}>
                     {projects.map((project, index) => (
                         <ProjectCard key={project.title} project={project} index={index} />

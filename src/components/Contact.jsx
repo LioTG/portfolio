@@ -25,6 +25,8 @@ const ContactCard = ({ link, index }) => {
                 alignItems: 'center',
                 textAlign: 'center',
                 cursor: 'pointer',
+                width: '100%',
+                maxWidth: '350px',
             }}
         >
             <div style={{
@@ -114,10 +116,11 @@ const Contact = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(min(250px, 100%), 1fr))',
                     gap: 'var(--spacing-lg)',
                     maxWidth: '1000px',
                     margin: '0 auto',
+                    justifyItems: 'center',
                 }}>
                     {contactLinks.map((link, index) => (
                         <ContactCard key={link.name} link={link} index={index} />
@@ -143,11 +146,13 @@ const Contact = () => {
                 <div className="container">
                     <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))',
                         gap: 'var(--spacing-xl)',
                         marginBottom: 'var(--spacing-2xl)',
                         maxWidth: '900px',
                         margin: '0 auto var(--spacing-2xl) auto',
+                        justifyItems: 'center',
+                        textAlign: 'center',
                     }}>
                         {/* About Section */}
                         <div>
@@ -266,10 +271,11 @@ const Contact = () => {
                         paddingTop: 'var(--spacing-xl)',
                         borderTop: '1px solid rgba(168, 85, 247, 0.1)',
                         display: 'flex',
-                        justifyContent: 'space-between',
+                        justifyContent: window.innerWidth <= 768 ? 'center' : 'space-between',
                         alignItems: 'center',
                         flexWrap: 'wrap',
                         gap: 'var(--spacing-md)',
+                        textAlign: 'center',
                     }}>
                         <p style={{
                             color: 'var(--color-text-muted)',

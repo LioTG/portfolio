@@ -15,6 +15,10 @@ const SkillCategoryCard = ({ category, categoryIndex }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             className="card"
+            style={{
+                width: '100%',
+                maxWidth: '450px',
+            }}
         >
             <div style={{
                 display: 'flex',
@@ -134,8 +138,9 @@ const Skills = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
                     gap: 'var(--spacing-xl)',
+                    justifyItems: 'center',
                 }}>
                     {skillCategories.map((category, categoryIndex) => (
                         <SkillCategoryCard key={category.title} category={category} categoryIndex={categoryIndex} />

@@ -15,6 +15,10 @@ const HighlightCard = ({ item, index }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             className="card"
+            style={{
+                width: '100%',
+                maxWidth: '400px',
+            }}
         >
             <div style={{
                 color: 'var(--color-neon-purple)',
@@ -74,9 +78,10 @@ const About = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
                     gap: 'var(--spacing-lg)',
                     marginBottom: 'var(--spacing-xl)',
+                    justifyItems: 'center',
                 }}>
                     {highlights.map((item, index) => (
                         <HighlightCard key={item.title} item={item} index={index} />
