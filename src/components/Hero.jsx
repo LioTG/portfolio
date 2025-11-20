@@ -103,8 +103,8 @@ const Hero = () => {
                                 key={skill}
                                 style={{
                                     padding: 'var(--spacing-xs) var(--spacing-md)',
-                                    background: 'rgba(168, 85, 247, 0.1)',
-                                    border: '1px solid rgba(168, 85, 247, 0.3)',
+                                    background: 'rgba(225, 184, 92, 0.1)',
+                                    border: '1px solid rgba(225, 184, 92, 0.3)',
                                     borderRadius: 'var(--border-radius-full)',
                                     color: 'var(--color-neon-purple)',
                                     fontSize: 'var(--text-sm)',
@@ -193,7 +193,7 @@ const Hero = () => {
                     }}>
                         Scroll
                     </span>
-                    <ChevronDown size={24} color="var(--color-neon-purple)" />
+                    <ChevronDown size={24} color="var(--color-gold-primary)" />
                 </motion.div>
             </motion.div>
 

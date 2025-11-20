@@ -31,9 +31,9 @@ const ParticleField = ({ mouse }) => {
             // Colores aleatorios entre púrpura y azul
             const color = new THREE.Color();
             if (Math.random() > 0.5) {
-                color.setHex(0xa855f7); // Púrpura neón
+                color.setHex(0xE1B85C); // Gold Primary
             } else {
-                color.setHex(0x3b82f6); // Azul neón
+                color.setHex(0xD9D9D9); // Silver
             }
 
             colors[i * 3] = color.r;

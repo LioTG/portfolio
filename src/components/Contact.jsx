@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Github, Instagram, Linkedin, Mail, MessageCircle, Youtube } from 'lucide-react';
 import { useSpotlight } from '../hooks/useSpotlight';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const ContactCard = ({ link, index }) => {
     const spotlightRef = useSpotlight();
@@ -54,6 +55,9 @@ const ContactCard = ({ link, index }) => {
 };
 
 const Contact = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const contactLinks = [
         {
             name: 'GitHub',
@@ -76,6 +80,34 @@ const Contact = () => {
             username: 'lionelchavezcarrasco@gmail.com',
             color: 'var(--color-neon-green)',
         },
+    ];
+
+    const handleNavClick = (e, sectionId) => {
+        e.preventDefault();
+
+        if (location.pathname !== '/') {
+            navigate('/');
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        } else {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
+    const navItems = [
+        { label: 'Inicio', id: 'home' },
+        { label: 'Sobre mí', id: 'about' },
+        { label: 'Skills', id: 'skills' },
+        { label: 'Proyectos', id: 'projects' },
+        { label: 'Timeline', id: 'timeline' },
+        { label: 'Contacto', id: 'contact' },
     ];
 
     return (
@@ -165,7 +197,7 @@ const Contact = () => {
                                 WebkitTextFillColor: 'transparent',
                                 marginBottom: 'var(--spacing-md)',
                             }}>
-                                L.Studios
+                                LioT&G
                             </h3>
                             <p style={{
                                 color: 'var(--color-text-secondary)',
@@ -192,20 +224,22 @@ const Contact = () => {
                                 padding: 0,
                                 margin: 0,
                             }}>
-                                {['Inicio', 'Sobre mí', 'Skills', 'Proyectos', 'Timeline', 'Contacto'].map((item, i) => (
+                                {navItems.map((item, i) => (
                                     <li key={i} style={{ marginBottom: 'var(--spacing-xs)' }}>
                                         <a
-                                            href={`#${item.toLowerCase().replace(' ', '')}`}
+                                            href={`#${item.id}`}
+                                            onClick={(e) => handleNavClick(e, item.id)}
                                             style={{
                                                 color: 'var(--color-text-secondary)',
                                                 textDecoration: 'none',
                                                 fontSize: 'var(--text-sm)',
                                                 transition: 'color 0.3s ease',
+                                                cursor: 'pointer',
                                             }}
                                             onMouseEnter={(e) => e.target.style.color = 'var(--color-neon-purple)'}
                                             onMouseLeave={(e) => e.target.style.color = 'var(--color-text-secondary)'}
                                         >
-                                            {item}
+                                            {item.label}
                                         </a>
                                     </li>
                                 ))}
@@ -242,7 +276,7 @@ const Contact = () => {
                                             height: '40px',
                                             borderRadius: '50%',
                                             background: 'var(--color-bg-tertiary)',
-                                            border: '1px solid rgba(168, 85, 247, 0.2)',
+                                            border: '1px solid rgba(225, 184, 92, 0.2)',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
@@ -269,7 +303,7 @@ const Contact = () => {
                     {/* Bottom Bar */}
                     <div style={{
                         paddingTop: 'var(--spacing-xl)',
-                        borderTop: '1px solid rgba(168, 85, 247, 0.1)',
+                        borderTop: '1px solid rgba(225, 184, 92, 0.1)',
                         display: 'flex',
                         justifyContent: window.innerWidth <= 768 ? 'center' : 'space-between',
                         alignItems: 'center',
@@ -283,7 +317,7 @@ const Contact = () => {
                             margin: 0,
                         }}>
                             © 2025 Lionel Chavez | L.Studios | Diseñado y desarrollado con{' '}
-                            <span style={{ color: 'var(--color-neon-purple)' }}>♥</span>
+                            <span style={{ color: 'var(--color-gold-primary)' }}>♥</span>
                         </p>
                         <p style={{
                             color: 'var(--color-text-muted)',

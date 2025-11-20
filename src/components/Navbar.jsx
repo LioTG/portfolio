@@ -80,7 +80,7 @@ const Navbar = () => {
                     : 'transparent',
                 backdropFilter: isScrolled ? 'blur(10px)' : 'none',
                 borderBottom: isScrolled
-                    ? '1px solid rgba(168, 85, 247, 0.1)'
+                    ? '1px solid rgba(225, 184, 92, 0.1)'
                     : '1px solid transparent',
             }}
         >
@@ -105,7 +105,7 @@ const Navbar = () => {
                         cursor: 'pointer',
                     }}
                 >
-                    L.Studios
+                    LioT&G
                 </a>
 
                 {/* Desktop Navigation */}
@@ -166,7 +166,7 @@ const Navbar = () => {
                                                 transform: 'translateX(-50%)',
                                                 background: 'rgba(10, 10, 15, 0.95)',
                                                 backdropFilter: 'blur(10px)',
-                                                border: '1px solid rgba(168, 85, 247, 0.2)',
+                                                border: '1px solid rgba(225, 184, 92, 0.2)',
                                                 borderRadius: 'var(--border-radius-md)',
                                                 padding: '0.5rem',
                                                 minWidth: '220px',
@@ -198,7 +198,7 @@ const Navbar = () => {
                                                         whiteSpace: 'nowrap'
                                                     }}
                                                     onMouseEnter={(e) => {
-                                                        e.currentTarget.style.background = 'rgba(168, 85, 247, 0.1)';
+                                                        e.currentTarget.style.background = 'rgba(225, 184, 92, 0.1)';
                                                         e.currentTarget.style.color = 'white';
                                                     }}
                                                     onMouseLeave={(e) => {
@@ -247,7 +247,7 @@ const Navbar = () => {
                         style={{
                             display: 'none',
                             background: 'rgba(10, 10, 15, 0.98)',
-                            borderTop: '1px solid rgba(168, 85, 247, 0.1)',
+                            borderTop: '1px solid rgba(225, 184, 92, 0.1)',
                             overflow: 'hidden',
                         }}
                     >

@@ -36,7 +36,7 @@ const TimelineEventCard = ({ event, index }) => {
                         : event.type === 'education'
                             ? 'var(--gradient-primary)'
                             : 'var(--gradient-secondary)',
-                    color: 'white',
+                    color: event.date === 'Actualidad' ? 'white' : '#000000',
                     padding: 'var(--spacing-xs) var(--spacing-lg)',
                     borderRadius: 'var(--border-radius-full)',
                     fontSize: 'var(--text-base)',
@@ -45,7 +45,7 @@ const TimelineEventCard = ({ event, index }) => {
                     marginBottom: 'var(--spacing-md)',
                     boxShadow: event.date === 'Actualidad'
                         ? '0 4px 20px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.3)'
-                        : '0 4px 20px rgba(168, 85, 247, 0.3)',
+                        : '0 4px 20px rgba(225, 184, 92, 0.3)',
                     animation: event.date === 'Actualidad' ? 'pulse 2s ease-in-out infinite' : 'none',
                 }}>
                     {event.date}

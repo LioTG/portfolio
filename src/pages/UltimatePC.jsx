@@ -15,8 +15,8 @@ const FeatureCard = ({ icon: Icon, title, description, delay }) => (
         whileHover={{
             y: -5,
             background: 'rgba(255, 255, 255, 0.05)',
-            borderColor: 'rgba(168, 85, 247, 0.3)',
-            boxShadow: '0 10px 30px -10px rgba(168, 85, 247, 0.2)'
+            borderColor: 'rgba(225, 184, 92, 0.3)',
+            boxShadow: '0 10px 30px -10px rgba(225, 184, 92, 0.2)'
         }}
     >
         <div className="feature-icon">
@@ -48,8 +48,8 @@ const UltimatePC = () => {
                     padding-top: 100px;
                     padding-bottom: 50px;
                     background: var(--color-bg-primary);
-                    background-image: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                                    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+                    background-image: radial-gradient(circle at 20% 30%, rgba(225, 184, 92, 0.05) 0%, transparent 50%),
+                                    radial-gradient(circle at 80% 70%, rgba(165, 126, 40, 0.05) 0%, transparent 50%);
                 }
 
                 .back-link {
@@ -133,18 +133,6 @@ const UltimatePC = () => {
                     border-radius: var(--border-radius-md);
                     text-decoration: none;
                     font-weight: 600;
-                    transition: transform 0.2s;
-                }
-
-                .btn-prototype {
-                    background: #00000;
-                    color: white;
-                    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
-                }
-
-                .btn-help {
-                    background: #5865F2;
-                    color: white;
                     border: 1px solid rgba(255, 255, 255, 0.1);
                 }
 
@@ -163,26 +151,20 @@ const UltimatePC = () => {
                 .section-subtitle {
                     color: var(--color-text-primary);
                     font-size: 1.5rem;
+                    margin-top: 3rem;
                     margin-bottom: 1.5rem;
                     font-family: var(--font-display);
                 }
 
-                .project-description {
-                    color: var(--color-text-secondary);
-                    line-height: 1.8;
-                    font-size: 1.1rem;
-                    margin-bottom: 2rem;
-                }
-
                 .features-grid {
                     display: grid;
-                    gap: 1rem;
+                    gap: 2rem;
                 }
 
                 .feature-card {
                     background: rgba(255, 255, 255, 0.03);
                     backdrop-filter: blur(10px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(225, 184, 92, 0.3);
                     border-radius: var(--border-radius-md);
                     padding: 1.5rem;
                     display: flex;
@@ -196,7 +178,7 @@ const UltimatePC = () => {
                     width: 48px;
                     height: 48px;
                     border-radius: 12px;
-                    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
+                    background: linear-gradient(135deg, rgba(225, 184, 92, 0.2), rgba(165, 126, 40, 0.2));
                     display: flex;
                     align-items: center;
                     justify-content: center;

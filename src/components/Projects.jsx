@@ -96,8 +96,8 @@ const ProjectCard = ({ project, index }) => {
                         key={tech}
                         style={{
                             padding: '0.25rem 0.75rem',
-                            background: 'rgba(59, 130, 246, 0.1)',
-                            border: '1px solid rgba(59, 130, 246, 0.3)',
+                            background: 'rgba(225, 184, 92, 0.1)',
+                            border: '1px solid rgba(225, 184, 92, 0.3)',
                             borderRadius: 'var(--border-radius-sm)',
                             color: 'var(--color-neon-blue)',
                             fontSize: 'var(--text-xs)',
@@ -114,7 +114,7 @@ const ProjectCard = ({ project, index }) => {
                 display: 'flex',
                 gap: 'var(--spacing-md)',
                 paddingTop: 'var(--spacing-md)',
-                borderTop: '1px solid rgba(168, 85, 247, 0.1)',
+                borderTop: '1px solid rgba(225, 184, 92, 0.1)',
             }}>
                 {project.link.startsWith('/') ? (
                     <Link
