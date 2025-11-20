@@ -159,7 +159,7 @@ const Projects = () => {
         {
             title: 'Urban Safe',
             description: 'Aplicación móvil enfocada en seguridad urbana. Proyecto de IHC con énfasis en diseño centrado en el usuario y tecnologías móviles.',
-            technologies: ['Mobile Dev', 'UX/UI', 'Figma', 'IHC'],
+            technologies: ['Mobile Dev', 'UX/UI', 'Figma', 'HTML/CSS'],
             role: 'UX/UI Designer',
             gradient: 'var(--gradient-accent)',
             image: '/images/urban-safe.png',

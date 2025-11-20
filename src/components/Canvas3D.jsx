@@ -4,6 +4,7 @@ import * as THREE from 'three';
 
 const ParticleField = ({ mouse }) => {
     const pointsRef = useRef();
+    const currentMouse = useRef({ x: 0, y: 0 }); // Ref para suavizar el movimiento del mouse
     const particleCount = 1000;
 
     // Guardar posiciones originales y crear colores
@@ -50,9 +51,14 @@ const ParticleField = ({ mouse }) => {
         const positions = pointsRef.current.geometry.attributes.position.array;
         const originalPositions = particles.originalPositions;
 
-        // Convertir coordenadas del mouse a espacio 3D (ajustado para el canvas)
-        const mouseX = mouse.x * 10;
-        const mouseY = mouse.y * 10;
+        // Interpolar suavemente la posición del mouse para evitar cortes bruscos
+        const lerpFactorMouse = 0.05;
+        currentMouse.current.x += (mouse.x - currentMouse.current.x) * lerpFactorMouse;
+        currentMouse.current.y += (mouse.y - currentMouse.current.y) * lerpFactorMouse;
+
+        // Convertir coordenadas del mouse suavizadas a espacio 3D
+        const mouseX = currentMouse.current.x * 10;
+        const mouseY = currentMouse.current.y * 10;
 
         for (let i = 0; i < particleCount; i++) {
             const i3 = i * 3;
@@ -98,9 +104,9 @@ const ParticleField = ({ mouse }) => {
 
         pointsRef.current.geometry.attributes.position.needsUpdate = true;
 
-        // Rotación muy suave del campo completo
-        pointsRef.current.rotation.y = time * 0.05 + mouse.x * 0.1;
-        pointsRef.current.rotation.x = mouse.y * 0.05;
+        // Rotación muy suave del campo completo usando el mouse suavizado
+        pointsRef.current.rotation.y = time * 0.05 + currentMouse.current.x * 0.1;
+        pointsRef.current.rotation.x = currentMouse.current.y * 0.05;
     });
 
     return (
