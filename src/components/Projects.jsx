@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useSpotlight } from '../hooks/useSpotlight';
 
 const ProjectCard = ({ project, index }) => {
@@ -115,22 +116,43 @@ const ProjectCard = ({ project, index }) => {
                 paddingTop: 'var(--spacing-md)',
                 borderTop: '1px solid rgba(168, 85, 247, 0.1)',
             }}>
-                <a
-                    href={project.link}
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 'var(--spacing-xs)',
-                        color: 'var(--color-text-secondary)',
-                        fontSize: 'var(--text-sm)',
-                        transition: 'color var(--transition-base)',
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-neon-purple)'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
-                >
-                    <ExternalLink size={16} />
-                    Ver más
-                </a>
+                {project.link.startsWith('/') ? (
+                    <Link
+                        to={project.link}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 'var(--spacing-xs)',
+                            color: 'var(--color-text-secondary)',
+                            fontSize: 'var(--text-sm)',
+                            transition: 'color var(--transition-base)',
+                            textDecoration: 'none',
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-neon-purple)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
+                    >
+                        <ExternalLink size={16} />
+                        Ver Detalles
+                    </Link>
+                ) : (
+                    <a
+                        href={project.link}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 'var(--spacing-xs)',
+                            color: 'var(--color-text-secondary)',
+                            fontSize: 'var(--text-sm)',
+                            transition: 'color var(--transition-base)',
+                            textDecoration: 'none',
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-neon-purple)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
+                    >
+                        <ExternalLink size={16} />
+                        Ver más
+                    </a>
+                )}
             </div>
         </motion.div>
     );
@@ -145,7 +167,7 @@ const Projects = () => {
             role: 'Game Developer & Designer',
             gradient: 'var(--gradient-primary)',
             image: '/images/ultimate-pc-simulator.png',
-            link: '#',
+            link: '/projects/ultimate-pc-simulator',
         },
         {
             title: 'Build A PC',

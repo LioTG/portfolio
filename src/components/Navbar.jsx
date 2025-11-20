@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+    const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false);
+
+    const projectLinks = [
+        { name: 'Ultimate PC Simulator', href: '/projects/ultimate-pc-simulator' },
+        { name: 'Build A PC', href: '#projects' },
+        { name: 'Urban Safe', href: '#projects' },
+        { name: 'L-Shop Bot', href: '#projects' },
+        { name: 'PC Creator Mod', href: '#projects' },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,12 +35,30 @@ const Navbar = () => {
         { name: 'Contacto', href: '#contact' },
     ];
 
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const handleNavClick = (e, href) => {
         e.preventDefault();
         setIsMobileMenuOpen(false);
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+
+        if (location.pathname === '/') {
+            const element = document.querySelector(href);
+            if (element) {
+                // Small delay to allow mobile menu to close and prevent layout thrashing
+                setTimeout(() => {
+                    const navHeight = 80; // Approximate navbar height
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }, 100);
+            }
+        } else {
+            navigate('/' + href);
         }
     };
 
@@ -91,7 +120,11 @@ const Navbar = () => {
                     className="nav-desktop"
                 >
                     {navItems.map((item) => (
-                        <li key={item.name}>
+                        <li key={item.name}
+                            style={{ position: 'relative' }}
+                            onMouseEnter={() => item.name === 'Proyectos' && setIsProjectsOpen(true)}
+                            onMouseLeave={() => item.name === 'Proyectos' && setIsProjectsOpen(false)}
+                        >
                             <a
                                 href={item.href}
                                 onClick={(e) => handleNavClick(e, item.href)}
@@ -103,16 +136,83 @@ const Navbar = () => {
                                     transition: 'color var(--transition-base)',
                                     position: 'relative',
                                     cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '4px'
                                 }}
                                 onMouseEnter={(e) => {
-                                    e.target.style.color = 'var(--color-neon-purple)';
+                                    e.currentTarget.style.color = 'var(--color-neon-purple)';
                                 }}
                                 onMouseLeave={(e) => {
-                                    e.target.style.color = 'var(--color-text-secondary)';
+                                    e.currentTarget.style.color = 'var(--color-text-secondary)';
                                 }}
                             >
                                 {item.name}
+                                {item.name === 'Proyectos' && <ChevronDown size={14} />}
                             </a>
+
+                            {item.name === 'Proyectos' && (
+                                <AnimatePresence>
+                                    {isProjectsOpen && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            transition={{ duration: 0.2 }}
+                                            style={{
+                                                position: 'absolute',
+                                                top: '100%',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                background: 'rgba(10, 10, 15, 0.95)',
+                                                backdropFilter: 'blur(10px)',
+                                                border: '1px solid rgba(168, 85, 247, 0.2)',
+                                                borderRadius: 'var(--border-radius-md)',
+                                                padding: '0.5rem',
+                                                minWidth: '220px',
+                                                boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)',
+                                                zIndex: 1000
+                                            }}
+                                        >
+                                            {projectLinks.map((project) => (
+                                                <a
+                                                    key={project.name}
+                                                    href={project.href}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setIsProjectsOpen(false);
+                                                        if (project.href.startsWith('/')) {
+                                                            navigate(project.href);
+                                                        } else {
+                                                            handleNavClick(e, project.href);
+                                                        }
+                                                    }}
+                                                    style={{
+                                                        display: 'block',
+                                                        padding: '0.75rem 1rem',
+                                                        color: 'var(--color-text-secondary)',
+                                                        fontSize: '0.9rem',
+                                                        textDecoration: 'none',
+                                                        borderRadius: 'var(--border-radius-sm)',
+                                                        transition: 'all 0.2s',
+                                                        whiteSpace: 'nowrap'
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.background = 'rgba(168, 85, 247, 0.1)';
+                                                        e.currentTarget.style.color = 'white';
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.background = 'transparent';
+                                                        e.currentTarget.style.color = 'var(--color-text-secondary)';
+                                                    }}
+                                                >
+                                                    {project.name}
+                                                </a>
+                                            ))}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            )}
                         </li>
                     ))}
                 </ul>
@@ -164,21 +264,85 @@ const Navbar = () => {
                                     transition={{ delay: index * 0.1 }}
                                     style={{ marginBottom: 'var(--spacing-md)' }}
                                 >
-                                    <a
-                                        href={item.href}
-                                        onClick={(e) => handleNavClick(e, item.href)}
-                                        style={{
-                                            fontFamily: 'var(--font-display)',
-                                            fontSize: 'var(--text-lg)',
-                                            fontWeight: 500,
-                                            color: 'var(--color-text-secondary)',
-                                            display: 'block',
-                                            padding: 'var(--spacing-sm)',
-                                            cursor: 'pointer',
-                                        }}
-                                    >
-                                        {item.name}
-                                    </a>
+                                    {item.name === 'Proyectos' ? (
+                                        <div>
+                                            <div
+                                                onClick={() => setIsMobileProjectsOpen(!isMobileProjectsOpen)}
+                                                style={{
+                                                    fontFamily: 'var(--font-display)',
+                                                    fontSize: 'var(--text-lg)',
+                                                    fontWeight: 500,
+                                                    color: 'var(--color-text-secondary)',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'space-between',
+                                                    padding: 'var(--spacing-sm)',
+                                                    cursor: 'pointer',
+                                                }}
+                                            >
+                                                {item.name}
+                                                <ChevronDown
+                                                    size={20}
+                                                    style={{
+                                                        transform: isMobileProjectsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                                                        transition: 'transform 0.3s'
+                                                    }}
+                                                />
+                                            </div>
+                                            <AnimatePresence>
+                                                {isMobileProjectsOpen && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, height: 0 }}
+                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                        exit={{ opacity: 0, height: 0 }}
+                                                        style={{ overflow: 'hidden', paddingLeft: '1rem' }}
+                                                    >
+                                                        {projectLinks.map((project) => (
+                                                            <a
+                                                                key={project.name}
+                                                                href={project.href}
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    setIsMobileMenuOpen(false);
+                                                                    if (project.href.startsWith('/')) {
+                                                                        navigate(project.href);
+                                                                    } else {
+                                                                        handleNavClick(e, project.href);
+                                                                    }
+                                                                }}
+                                                                style={{
+                                                                    display: 'block',
+                                                                    padding: '0.5rem 1rem',
+                                                                    color: 'var(--color-text-secondary)',
+                                                                    fontSize: '0.9rem',
+                                                                    textDecoration: 'none',
+                                                                    fontFamily: 'var(--font-body)',
+                                                                }}
+                                                            >
+                                                                {project.name}
+                                                            </a>
+                                                        ))}
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    ) : (
+                                        <a
+                                            href={item.href}
+                                            onClick={(e) => handleNavClick(e, item.href)}
+                                            style={{
+                                                fontFamily: 'var(--font-display)',
+                                                fontSize: 'var(--text-lg)',
+                                                fontWeight: 500,
+                                                color: 'var(--color-text-secondary)',
+                                                display: 'block',
+                                                padding: 'var(--spacing-sm)',
+                                                cursor: 'pointer',
+                                            }}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    )}
                                 </motion.li>
                             ))}
                         </ul>

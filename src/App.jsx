@@ -1,11 +1,8 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Timeline from './components/Timeline';
-import Contact from './components/Contact';
+import Home from './pages/Home';
+import UltimatePC from './pages/UltimatePC';
 
 function App() {
   return (
@@ -14,14 +11,10 @@ function App() {
       background: 'var(--color-bg-primary)',
     }}>
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Timeline />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects/ultimate-pc-simulator" element={<UltimatePC />} />
+      </Routes>
     </div>
   );
 }

@@ -8,6 +8,7 @@
   --color-bg-tertiary: #1a1a24;
   --color-bg-card: rgba(26, 26, 36, 0.8);
   --color-bg-card-hover: rgba(36, 36, 50, 0.9);
+  --color-primary: var(--color-neon-blue);
 
   /* Neon Accents */
   --color-neon-purple: #a855f7;
@@ -188,7 +189,7 @@ a {
   transition: color var(--transition-base);
 }
 
-a:hover {
+a:not(.btn-primary):not(.btn-secondary):hover {
   color: var(--color-neon-blue);
 }
 

@@ -57,7 +57,7 @@ const Hero = () => {
 
             {/* Content */}
             <div className="container" style={{ position: 'relative', zIndex: 3 }}>
-                <div style={{ maxWidth: '700px' }}>
+                <div className="hero-content" style={{ maxWidth: '700px' }}>
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -90,6 +90,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
+                        className="hero-skills"
                         style={{
                             display: 'flex',
                             flexWrap: 'wrap',
@@ -136,6 +137,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8 }}
+                        className="hero-buttons"
                         style={{
                             display: 'flex',
                             gap: 'var(--spacing-md)',
@@ -197,6 +199,13 @@ const Hero = () => {
 
             <style jsx>{`
         @media (max-width: 768px) {
+          .hero-content {
+            text-align: center;
+            margin: 0 auto;
+          }
+          .hero-skills, .hero-buttons {
+            justify-content: center;
+          }
           h1 {
             font-size: var(--text-4xl) !important;
           }
