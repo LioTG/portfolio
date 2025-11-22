@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Award, Code, Briefcase } from 'lucide-react';
+import { Calendar, Award, Code, Briefcase, Brain } from 'lucide-react';
 import { useSpotlight } from '../hooks/useSpotlight';
 
 const TimelineEventCard = ({ event, index }) => {
@@ -132,7 +132,7 @@ const Timeline = () => {
             type: 'education',
         },
         {
-            date: 'Noviembre 2024 - Actualidad',
+            date: 'Desde Noviembre 2024',
             year: '2024',
             month: 'Nov',
             title: 'Ultimate PC Simulator',
@@ -159,12 +159,21 @@ const Timeline = () => {
             type: 'education',
         },
         {
-            date: 'Agosto 2022 - Actualidad',
+            date: 'Desde Agosto 2022',
             year: '2022',
             month: 'Ago',
             title: 'L-Shop Bot',
-            description: 'Bot desarrollado con Discord.js, con módulos de economía, inventario, administración y comandos personalizados',
+            description: 'Bot con economía y tienda virtual inspirado en Ultimate PC Simulator, incluyendo inventario, administración y comandos personalizados en Discord.js',
             icon: <Code size={24} />,
+            type: 'project',
+        },
+        {
+            date: 'Desde Septiembre 2021',
+            year: '2021',
+            month: 'Sep',
+            title: 'Idea de Ultimate PC Simulator',
+            description: 'Inicio del proyecto: diseño de componentes reales en Adobe XD y elaboración del primer prototipo jugable de ensamblaje 2D',
+            icon: <Brain size={24} />,
             type: 'project',
         },
     ];

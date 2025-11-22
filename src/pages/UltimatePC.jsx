@@ -1,16 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Box, Code, Wrench, Cpu, Banknote, MessageCircle } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Box, Code, Wrench, Cpu, Banknote, Newspaper, Users } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa';
 import { SiAdobexd } from "react-icons/si";
 import { Link } from 'react-router-dom';
 
-const FeatureCard = ({ icon: Icon, title, description, delay }) => (
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5
+        }
+    }
+};
+
+const FeatureCard = ({ icon: Icon, title, description }) => (
     <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay }}
-        viewport={{ once: true }}
+        variants={itemVariants}
         className="feature-card"
         whileHover={{
             y: -5,
@@ -105,10 +123,10 @@ const UltimatePC = () => {
 
                 .content-grid {
                     display: grid;
-                    grid-template-columns: 1.2fr 0.8fr;
-                    gap: 4rem;
-                    align-items: start;
-                    margin-bottom: 4rem;
+                    grid-template-columns: 1.1fr 0.9fr;
+                    gap: 3rem;
+                    align-items: center;
+                    margin-bottom: 3rem;
                 }
 
                 .project-image {
@@ -116,13 +134,14 @@ const UltimatePC = () => {
                     border-radius: var(--border-radius-lg);
                     border: 1px solid rgba(255, 255, 255, 0.1);
                     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-                    margin-bottom: 2rem;
+                    margin-bottom: 0;
                 }
 
                 .action-buttons {
                     display: flex;
                     gap: 1rem;
                     justify-content: center;
+                    margin-top: 2rem;
                 }
 
                 .btn-prototype, .btn-help {
@@ -134,10 +153,17 @@ const UltimatePC = () => {
                     text-decoration: none;
                     font-weight: 600;
                     border: 1px solid rgba(255, 255, 255, 0.1);
+                    transition: all 0.3s ease;
                 }
 
-                .btn-prototype:hover, .btn-help:hover {
+                .btn-prototype:hover{
                     transform: translateY(-2px);
+                    color: white !important;
+                }
+
+                .btn-help:hover{
+                    transform: translateY(-2px);
+                    background-color: #5865F2;
                     color: white !important;
                 }
 
@@ -151,9 +177,10 @@ const UltimatePC = () => {
                 .section-subtitle {
                     color: var(--color-text-primary);
                     font-size: 1.5rem;
-                    margin-top: 3rem;
-                    margin-bottom: 1.5rem;
+                    margin-top: 4rem;
+                    margin-bottom: 2rem;
                     font-family: var(--font-display);
+                    text-align: center;
                 }
 
                 .features-grid {
@@ -206,6 +233,11 @@ const UltimatePC = () => {
                     
                     .project-image {
                         margin-bottom: 1.5rem;
+                        order: 2;
+                    }
+
+                    .content-grid > div:first-child {
+                        order: 1;
                     }
                 }
 
@@ -258,16 +290,13 @@ const UltimatePC = () => {
                     </div>
 
                     <div className="content-grid">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                            <img
-                                src="/images/ultimate-pc-simulator.png"
-                                alt="Ultimate PC Simulator Gameplay"
-                                className="project-image"
-                            />
+                        <div>
+                            <h3 className="section-title">
+                                Sobre el Proyecto
+                            </h3>
+                            <p className="project-description">
+                                Simulador 2D de ensamblaje de PCs donde los jugadores construyen computadoras usando componentes interactivos, sistema de compatibilidad y UI avanzada. Inspirado en la complejidad del hardware real pero adaptado a una experiencia de juego fluida y educativa.
+                            </p>
 
                             <div className="action-buttons">
                                 <a href="https://xd.adobe.com/view/1d7f1f0e-695b-455e-a29c-79fbd096e3b5-482c/?fullscreen&hints=off" target="_blank" className="btn-prototype">
@@ -279,41 +308,66 @@ const UltimatePC = () => {
                                     Ayuda
                                 </a>
                             </div>
+                        </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <img
+                                src="/images/ultimate-pc-simulator.png"
+                                alt="Ultimate PC Simulator Gameplay"
+                                className="project-image"
+                            />
+                        </motion.div>
+                    </div>
+
+                    <div>
+                        <h3 className="section-subtitle">
+                            Características Clave
+                        </h3>
+
+                        <motion.div
+                            className="features-grid"
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                        >
+                            <FeatureCard
+                                icon={Wrench}
+                                title="Ensamblaje de PCs en 2D"
+                                description="Monta gabinetes, placas, CPUs, RAM y GPUs en una interfaz 2D guiada, inspirada en el armado real de PCs."
+                            />
+                            <FeatureCard
+                                icon={Cpu}
+                                title="Lógica de Compatibilidad"
+                                description="El juego valida sockets, tipo de RAM y otros requisitos para evitar combinaciones incompatibles al armar tu PC."
+                            />
+                            <FeatureCard
+                                icon={Banknote}
+                                title="L-Shop y ReTech Store"
+                                description="Compra componentes nuevos y de segunda mano con marcas parodia y precios basados en generación y gama de hardware."
+                            />
+                            <FeatureCard
+                                icon={Newspaper}
+                                title="Noticias de hardware"
+                                description="Revive lanzamientos y eventos tecnológicos de 2016 en un feed de noticias integrado dentro del juego."
+                            />
+                            <FeatureCard
+                                icon={Users}
+                                title="Pedidos de clientes"
+                                description="Recibe encargos con presupuestos y requisitos específicos, arma PCs que cumplan las condiciones y gana reputación."
+                            />
                         </motion.div>
 
-                        <div>
-                            <h3 className="section-title">
-                                Sobre el Proyecto
-                            </h3>
-                            <p className="project-description">
-                                Simulador 2D de ensamblaje de PCs donde los jugadores construyen computadoras usando componentes interactivos, sistema de compatibilidad y UI avanzada. Inspirado en la complejidad del hardware real pero adaptado a una experiencia de juego fluida y educativa.
-                            </p>
-
-                            <h3 className="section-subtitle">
-                                Características Clave
-                            </h3>
-
-                            <div className="features-grid">
-                                <FeatureCard
-                                    icon={Wrench}
-                                    title="Ensamblaje Realista"
-                                    description="Sistema drag-and-drop con puntos de anclaje precisos para cada componente."
-                                    delay={0.1}
-                                />
-                                <FeatureCard
-                                    icon={Cpu}
-                                    title="Lógica de Compatibilidad"
-                                    description="Validación en tiempo real de sockets, chipsets y tipos de memoria RAM."
-                                    delay={0.1}
-                                />
-                                <FeatureCard
-                                    icon={Banknote}
-                                    title="Economía Dinámica"
-                                    description="Gestión de presupuesto, compra de componentes y venta de equipos armados."
-                                    delay={0.1}
-                                />
-                            </div>
-                        </div>
+                        <h3 className="section-subtitle">
+                            Mi rol en el proyecto
+                        </h3>
+                        <p className="project-description">
+                            Lidero el desarrollo de Ultimate PC Simulator, definiendo la experiencia del jugador, diseñando la interfaz y programando los sistemas principales en Unity/C#, incluyendo compatibilidad de hardware, flujo de compra, pedidos de los clientes y contenido informativo.
+                        </p>
                     </div>
                 </motion.div>
             </div>
