@@ -132,7 +132,7 @@ const ProjectCard = ({ project, index }) => {
                         onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
                     >
                         <ExternalLink size={16} />
-                        Ver Detalles
+                        Ver más
                     </Link>
                 ) : (
                     <a
@@ -185,7 +185,7 @@ const Projects = () => {
             role: 'UX/UI Designer',
             gradient: 'var(--gradient-accent)',
             image: '/images/urban-safe.png',
-            link: '#',
+            link: '/projects/urban-safe',
         },
         {
             title: 'L-Shop Bot',
