@@ -208,7 +208,7 @@ const Projects = () => {
         {
             title: 'Entreprenly',
             description: 'Plataforma web enfocada en conectar startups, desarrollada aplicando Domain-Driven Design (DDD) y metodologías ágiles en equipo.',
-            technologies: ['Angular', 'Vue', 'Java', 'DDD'],
+            technologies: ['Angular', 'TypeScript', 'Java', 'Vue', 'JavaScript', 'C#', 'DDD'],
             role: 'Full Stack Developer',
             gradient: 'var(--gradient-primary)',
             image: import.meta.env.BASE_URL + 'images/entreprenly.png',

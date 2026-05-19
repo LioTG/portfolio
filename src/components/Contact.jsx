@@ -316,7 +316,7 @@ const Contact = () => {
                             fontSize: 'var(--text-sm)',
                             margin: 0,
                         }}>
-                            © 2025 Lionel Chavez | L.Studios | Diseñado y desarrollado con{' '}
+                            © 2026 Lionel Chavez | L.Studios | Diseñado y desarrollado con{' '}
                             <span style={{ color: 'var(--color-gold-primary)' }}>♥</span>
                         </p>
                         <p style={{

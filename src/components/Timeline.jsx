@@ -97,8 +97,17 @@ const Timeline = () => {
     const timelineEvents = [
         {
             date: 'Actualidad',
-            year: '2025',
+            year: '2026',
             month: 'Actual',
+            title: 'UPC - 5to Ciclo',
+            description: 'Desarrollando aplicaciones Open Source con Angular, TypeScript y Java, y creando Aplicaciones Web con Vue y C# con enfoque DDD.',
+            icon: <Calendar size={24} />,
+            type: 'education',
+        },
+        {
+            date: 'Agosto - Diciembre 2025',
+            year: '2025',
+            month: 'Ago',
             title: 'UPC - 4to Ciclo',
             description: 'Avanzando en Ingeniería de Software con enfoque en desarrollo de videojuegos y UX/UI',
             icon: <Calendar size={24} />,
