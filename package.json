@@ -2,7 +2,7 @@
   "name": "lio-portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://liotg.github.io/lio-portfolio/",
+  "homepage": "https://liotg.github.io/portfolio/",
   "type": "module",
   "scripts": {
     "dev": "vite",

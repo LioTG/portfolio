@@ -163,21 +163,13 @@ const Projects = () => {
         {
             title: 'Ultimate PC Simulator',
             description: 'Simulador 2D de ensamblaje de PCs donde los jugadores construyen computadoras usando componentes interactivos, sistema de compatibilidad y UI avanzada, inspirado en hardware real.',
-            technologies: ['Unity', 'C#', '2D', 'UI/UX'],
+            technologies: ['Unity', 'C#', 'Figma', 'Adobe XD', 'UI/UX'],
             role: 'Game Developer & Designer',
             gradient: 'var(--gradient-primary)',
             image: import.meta.env.BASE_URL + 'images/ultimate-pc-simulator.png',
             link: '/projects/ultimate-pc-simulator',
         },
-        {
-            title: 'Build A PC',
-            description: 'Juego educativo en Roblox usando Lua Script. Experiencia interactiva para aprender sobre hardware de computadoras mientras construyes tu PC ideal.',
-            technologies: ['Roblox Studio', 'Lua', 'Game Design'],
-            role: 'Game Developer',
-            gradient: 'var(--gradient-secondary)',
-            image: import.meta.env.BASE_URL + 'images/build-a-pc.png',
-            link: '#',
-        },
+
         {
             title: 'Urban Safe',
             description: 'Aplicación móvil enfocada en seguridad urbana. Proyecto de IHC con énfasis en diseño centrado en el usuario y tecnologías móviles.',

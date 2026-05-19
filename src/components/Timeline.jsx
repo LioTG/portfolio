@@ -122,15 +122,7 @@ const Timeline = () => {
             icon: <Briefcase size={24} />,
             type: 'project',
         },
-        {
-            date: 'Julio 2025',
-            year: '2025',
-            month: 'Ene',
-            title: 'Build A PC - Roblox',
-            description: 'Juego educativo en Roblox usando Lua Script',
-            icon: <Code size={24} />,
-            type: 'project',
-        },
+
         {
             date: 'Marzo - Julio 2025',
             year: '2025',

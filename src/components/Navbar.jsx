@@ -11,7 +11,7 @@ const Navbar = () => {
 
     const projectLinks = [
         { name: 'Ultimate PC Simulator', href: '/projects/ultimate-pc-simulator' },
-        { name: 'Build A PC', href: '#projects' },
+
         { name: 'Urban Safe', href: '/projects/urban-safe' },
         { name: 'L-Shop Bot', href: '#projects' },
         { name: 'PC Creator Mod', href: '#projects' },
