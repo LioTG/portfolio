@@ -331,7 +331,7 @@ const UrbanSafe = () => {
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
                             <img
-                                src="/images/urban-safe.png"
+                                src={`${import.meta.env.BASE_URL}images/urban-safe.png`}
                                 alt="Urban Safe Interface"
                                 className="project-image"
                             />

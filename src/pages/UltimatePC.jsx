@@ -316,7 +316,7 @@ const UltimatePC = () => {
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
                             <img
-                                src="/images/ultimate-pc-simulator.png"
+                                src={`${import.meta.env.BASE_URL}images/ultimate-pc-simulator.png`}
                                 alt="Ultimate PC Simulator Gameplay"
                                 className="project-image"
                             />

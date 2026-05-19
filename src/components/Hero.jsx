@@ -128,7 +128,7 @@ const Hero = () => {
                             lineHeight: 1.8,
                         }}
                     >
-                        Estudiante de 4to ciclo en la UPC, apasionado por el desarrollo de videojuegos,
+                        Estudiante de 5to ciclo en la UPC, apasionado por el desarrollo de videojuegos,
                         diseño UX/UI y tecnología. Especializado en crear experiencias interactivas
                         innovadoras con un enfoque en liderazgo y metodologías ágiles.
                     </motion.p>
@@ -144,12 +144,12 @@ const Hero = () => {
                             flexWrap: 'wrap',
                         }}
                     >
-                        <button className="btn btn-primary" onClick={() => scrollToSection('#contact')}>
+                        <a href={`${import.meta.env.BASE_URL}CV_Lionel_Chavez.pdf`} download="CV_Lionel_Chavez.pdf" className="btn btn-primary" style={{ textDecoration: 'none' }}>
                             <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)' }}>
                                 <Download size={20} />
-                                Ver CV
+                                Descargar CV
                             </span>
-                        </button>
+                        </a>
                         <button className="btn btn-secondary" onClick={() => scrollToSection('#projects')}>
                             <span style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-xs)' }}>
                                 <Briefcase size={20} />

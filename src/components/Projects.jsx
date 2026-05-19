@@ -166,7 +166,7 @@ const Projects = () => {
             technologies: ['Unity', 'C#', '2D', 'UI/UX'],
             role: 'Game Developer & Designer',
             gradient: 'var(--gradient-primary)',
-            image: '/images/ultimate-pc-simulator.png',
+            image: import.meta.env.BASE_URL + 'images/ultimate-pc-simulator.png',
             link: '/projects/ultimate-pc-simulator',
         },
         {
@@ -175,7 +175,7 @@ const Projects = () => {
             technologies: ['Roblox Studio', 'Lua', 'Game Design'],
             role: 'Game Developer',
             gradient: 'var(--gradient-secondary)',
-            image: '/images/build-a-pc.png',
+            image: import.meta.env.BASE_URL + 'images/build-a-pc.png',
             link: '#',
         },
         {
@@ -184,7 +184,7 @@ const Projects = () => {
             technologies: ['Mobile Dev', 'UX/UI', 'Figma', 'HTML/CSS'],
             role: 'UX/UI Designer',
             gradient: 'var(--gradient-accent)',
-            image: '/images/urban-safe.png',
+            image: import.meta.env.BASE_URL + 'images/urban-safe.png',
             link: '/projects/urban-safe',
         },
         {
@@ -193,7 +193,7 @@ const Projects = () => {
             technologies: ['JavaScript', 'Discord.js', 'Node.js', 'GitHub'],
             role: 'Bot Developer',
             gradient: 'var(--gradient-primary)',
-            image: '/images/l-shop-bot.png',
+            image: import.meta.env.BASE_URL + 'images/l-shop-bot.png',
             link: '#',
         },
         {
@@ -202,8 +202,17 @@ const Projects = () => {
             technologies: ['MCreator', 'Java', 'Blockbench'],
             role: 'Proximamente',
             gradient: 'var(--gradient-secondary)',
-            image: '/images/pc-creator-mod.png',
+            image: import.meta.env.BASE_URL + 'images/pc-creator-mod.png',
             link: '#',
+        },
+        {
+            title: 'Entreprenly',
+            description: 'Plataforma web enfocada en conectar startups, desarrollada aplicando Domain-Driven Design (DDD) y metodologías ágiles en equipo.',
+            technologies: ['Angular', 'Vue', 'Java', 'DDD'],
+            role: 'Full Stack Developer',
+            gradient: 'var(--gradient-primary)',
+            image: import.meta.env.BASE_URL + 'images/entreprenly.png',
+            link: 'https://github.com/Kauflink/daop-entreprenly',
         },
     ];
 

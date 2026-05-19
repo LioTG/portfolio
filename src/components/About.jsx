@@ -44,7 +44,7 @@ const About = () => {
     const highlights = [
         {
             icon: <GraduationCap size={32} />,
-            title: 'UPC - 4to Ciclo',
+            title: 'UPC - 5to Ciclo',
             description: 'Estudiante de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas',
         },
         {
@@ -105,7 +105,7 @@ const About = () => {
                         color: 'var(--color-text-secondary)',
                         marginBottom: 'var(--spacing-md)',
                     }}>
-                        Actualmente cursando el 4to ciclo de Ingeniería de Software en la UPC, combino mi pasión
+                        Actualmente cursando el 5to ciclo de Ingeniería de Software en la UPC, combino mi pasión
                         por el desarrollo de videojuegos con un fuerte interés en el diseño UX/UI y las metodologías
                         ágiles. Mi experiencia abarca desde el desarrollo en Unity y C# hasta la creación de
                         aplicaciones web modernas con JavaScript.
