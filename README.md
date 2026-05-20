@@ -1,16 +1,55 @@
-# React + Vite
+# Lio's Portfolio 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the source code of my personal portfolio! This project is a 3D interactive web application built with modern web technologies.
 
-Currently, two official plugins are available:
+## 🛠️ Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Framework**: [React](https://react.dev/) with [Vite](https://vitejs.dev/)
+- **3D Graphics**: [Three.js](https://threejs.org/) alongside [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/) and [@react-three/drei](https://github.com/pmndrs/drei)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
+- **Routing**: [React Router](https://reactrouter.com/)
+- **Deployment**: GitHub Pages
 
-## React Compiler
+## 🚀 Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Follow these steps to run the project locally.
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/liotg/portfolio.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd lio-portfolio
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the App
+
+Start the development server:
+```bash
+npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+
+## 📦 Building and Deployment
+
+To create a production build:
+```bash
+npm run build
+```
+
+This project is configured to be deployed on GitHub Pages. To deploy the latest version, simply run:
+```bash
+npm run deploy
+```
