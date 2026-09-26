@@ -199,8 +199,8 @@ const Projects = () => {
         },
         {
             title: 'Entreprenly',
-            description: 'Plataforma web enfocada en conectar startups, desarrollada aplicando Domain-Driven Design (DDD) y metodologías ágiles en equipo.',
-            technologies: ['Angular', 'TypeScript', 'Java', 'Vue', 'JavaScript', 'C#', 'DDD'],
+            description: 'Plataforma para conectar startups, desarrollada con Domain-Driven Design (DDD) y metodologías ágiles. En el curso de Aplicaciones para Dispositivos Móviles estamos adaptando el dashboard a una app móvil, con las mismas funcionalidades y el backend existente. Estoy a cargo del bounded context Profile.',
+            technologies: ['Angular', 'TypeScript', 'Java', 'Vue', 'JavaScript', 'C#', 'DDD', 'Android Studio', 'Kotlin', 'Jetpack Compose'],
             role: 'Full Stack Developer',
             gradient: 'var(--gradient-primary)',
             image: import.meta.env.BASE_URL + 'images/entreprenly.png',

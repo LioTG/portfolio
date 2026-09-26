@@ -128,9 +128,8 @@ const Hero = () => {
                             lineHeight: 1.8,
                         }}
                     >
-                        Estudiante de 5to ciclo en la UPC, apasionado por el desarrollo de videojuegos,
-                        diseño UX/UI y tecnología. Especializado en crear experiencias interactivas
-                        innovadoras con un enfoque en liderazgo y metodologías ágiles.
+                        Estudiante de 6to ciclo en la UPC, apasionado por el desarrollo de videojuegos,
+                        el diseño UX/UI y la tecnología, actualmente explorando el desarrollo móvil.
                     </motion.p>
 
                     <motion.div
