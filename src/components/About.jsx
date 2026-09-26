@@ -44,7 +44,7 @@ const About = () => {
     const highlights = [
         {
             icon: <GraduationCap size={32} />,
-            title: 'UPC - 6to Ciclo',
+            title: 'Sexto ciclo · UPC',
             description: 'Estudiante de Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas',
         },
         {
@@ -105,19 +105,16 @@ const About = () => {
                         color: 'var(--color-text-secondary)',
                         marginBottom: 'var(--spacing-md)',
                     }}>
-                        Actualmente curso el 6to ciclo de Ingeniería de Software en la UPC. En Aplicaciones para
-                        Dispositivos Móviles estoy reutilizando Entreprenly como base para un proyecto móvil con
-                        Android Studio, Kotlin y Jetpack Compose. También me interesan el desarrollo de videojuegos,
-                        el diseño UX/UI y las metodologías ágiles.
+                        Estudio Ingeniería de Software en la UPC y curso el sexto ciclo. Actualmente amplío mi
+                        experiencia en desarrollo móvil con Kotlin y Jetpack Compose.
                     </p>
                     <p style={{
                         fontSize: 'var(--text-lg)',
                         lineHeight: 1.8,
                         color: 'var(--color-text-secondary)',
                     }}>
-                        Me apasiona el hardware, los videojuegos y liderar equipos hacia el éxito mediante Scrum
-                        y Lean UX. Busco constantemente aprender nuevas tecnologías y aplicar soluciones innovadoras
-                        a problemas complejos.
+                        Me interesan el desarrollo de videojuegos, el hardware y el diseño UX/UI. También disfruto
+                        colaborar en equipo y organizar el trabajo con Scrum y Lean UX.
                     </p>
                 </motion.div>
             </div>

@@ -41,6 +41,8 @@ const ProjectCard = ({ project, index }) => {
                     <img
                         src={project.image}
                         alt={project.title}
+                        loading="lazy"
+                        decoding="async"
                         style={{
                             width: '100%',
                             height: '100%',
@@ -199,7 +201,7 @@ const Projects = () => {
         },
         {
             title: 'Entreprenly',
-            description: 'Plataforma para conectar startups, desarrollada con Domain-Driven Design (DDD) y metodologías ágiles. En el curso de Aplicaciones para Dispositivos Móviles estamos adaptando el dashboard a una app móvil, con las mismas funcionalidades y el backend existente. Estoy a cargo del bounded context Profile.',
+            description: 'Plataforma para conectar startups. En el curso de Aplicaciones para Dispositivos Móviles estamos llevando el dashboard web a Android, manteniendo sus funcionalidades y el backend existente. Me encargo del bounded context Profile con Kotlin y Jetpack Compose.',
             technologies: ['Angular', 'TypeScript', 'Java', 'Vue', 'JavaScript', 'C#', 'DDD', 'Android Studio', 'Kotlin', 'Jetpack Compose'],
             role: 'Full Stack Developer',
             gradient: 'var(--gradient-primary)',

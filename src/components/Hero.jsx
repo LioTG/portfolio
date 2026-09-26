@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Briefcase, ChevronDown } from 'lucide-react';
-import Canvas3D from './Canvas3D';
+const Canvas3D = lazy(() => import('./Canvas3D'));
 
 const Hero = () => {
-    const [mouse, setMouse] = useState({ x: 0, y: 0 });
+    const mouse = useRef({ x: 0, y: 0 });
 
     const scrollToSection = (sectionId) => {
         const element = document.querySelector(sectionId);
@@ -25,7 +25,8 @@ const Hero = () => {
         const x = (xInside / width) * 2 - 1;
         const y = -(yInside / height) * 2 + 1;
 
-        setMouse({ x, y });
+        mouse.current.x = x;
+        mouse.current.y = y;
     };
 
     return (
@@ -44,7 +45,9 @@ const Hero = () => {
             }}
         >
             {/* 3D Background */}
-            <Canvas3D mouse={mouse} />
+            <Suspense fallback={null}>
+                <Canvas3D mouse={mouse} />
+            </Suspense>
 
             {/* Overlay Gradient */}
             <div style={{
@@ -98,7 +101,7 @@ const Hero = () => {
                             marginBottom: 'var(--spacing-xl)',
                         }}
                     >
-                        {['Unity', 'C#', 'C++', 'JavaScript', 'UX/UI', 'Agile'].map((skill, index) => (
+                        {['Unity', 'C#', 'C++', 'JavaScript', 'Kotlin', 'Jetpack Compose', 'UX/UI', 'Agile'].map((skill) => (
                             <span
                                 key={skill}
                                 style={{
@@ -128,8 +131,8 @@ const Hero = () => {
                             lineHeight: 1.8,
                         }}
                     >
-                        Estudiante de 6to ciclo en la UPC, apasionado por el desarrollo de videojuegos,
-                        el diseño UX/UI y la tecnología, actualmente explorando el desarrollo móvil.
+                        Curso el sexto ciclo de Ingeniería de Software en la UPC. Me interesa crear videojuegos
+                        y experiencias digitales intuitivas, y actualmente estoy ampliando mi experiencia en desarrollo móvil.
                     </motion.p>
 
                     <motion.div

@@ -5,7 +5,7 @@ import * as THREE from 'three';
 const ParticleField = ({ mouse }) => {
     const pointsRef = useRef();
     const currentMouse = useRef({ x: 0, y: 0 }); // Ref para suavizar el movimiento del mouse
-    const particleCount = 1000;
+    const particleCount = 500;
 
     // Guardar posiciones originales y crear colores
     const particles = useMemo(() => {
@@ -53,8 +53,8 @@ const ParticleField = ({ mouse }) => {
 
         // Interpolar suavemente la posición del mouse para evitar cortes bruscos
         const lerpFactorMouse = 0.05;
-        currentMouse.current.x += (mouse.x - currentMouse.current.x) * lerpFactorMouse;
-        currentMouse.current.y += (mouse.y - currentMouse.current.y) * lerpFactorMouse;
+        currentMouse.current.x += (mouse.current.x - currentMouse.current.x) * lerpFactorMouse;
+        currentMouse.current.y += (mouse.current.y - currentMouse.current.y) * lerpFactorMouse;
 
         // Convertir coordenadas del mouse suavizadas a espacio 3D
         const mouseX = currentMouse.current.x * 10;
@@ -80,19 +80,17 @@ const ParticleField = ({ mouse }) => {
             // Calcular distancia al mouse
             const dx = targetX - mouseX;
             const dy = targetY - mouseY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            // Radio de influencia del mouse
+            const distanceSquared = dx * dx + dy * dy;
             const influenceRadius = 3;
 
             // Si está dentro del radio de influencia, aplicar repulsión
-            if (distance < influenceRadius && distance > 0) {
+            if (distanceSquared < influenceRadius * influenceRadius && distanceSquared > 0) {
+                const distance = Math.sqrt(distanceSquared);
                 const force = (1 - distance / influenceRadius) * 0.5; // Fuerza de repulsión suave
-                const angle = Math.atan2(dy, dx);
 
                 // Desplazar suavemente alejándose del mouse
-                targetX += Math.cos(angle) * force;
-                targetY += Math.sin(angle) * force;
+                targetX += (dx / distance) * force;
+                targetY += (dy / distance) * force;
             }
 
             // Interpolar suavemente hacia la posición objetivo (lerp)
