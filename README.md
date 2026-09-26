@@ -42,14 +42,11 @@ npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-## 📦 Building and Deployment
+## 📦 Build and deployment
 
-To create a production build:
+To create a production build locally:
 ```bash
 npm run build
 ```
 
-This project is configured to be deployed on GitHub Pages. To deploy the latest version, simply run:
-```bash
-npm run deploy
-```
+Every push to `main` builds the site and deploys the `dist/` folder to GitHub Pages with the workflow in `.github/workflows/deploy.yml`. In the repository settings, set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. You can monitor deployments in the **Actions** tab.
