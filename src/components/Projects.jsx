@@ -163,6 +163,15 @@ const ProjectCard = ({ project, index }) => {
 const Projects = () => {
     const projects = [
         {
+            title: 'PCReady',
+            description: 'Comparador de precios de componentes de PC en tiendas peruanas. Permite comparar ofertas por modelo, armar una configuración con verificaciones de compatibilidad y compartir o imprimir una cotización referencial.',
+            technologies: ['Next.js', 'TypeScript', 'React', 'Cloudflare'],
+            role: 'Full Stack Developer & UI/UX Designer',
+            gradient: 'var(--gradient-primary)',
+            image: import.meta.env.BASE_URL + 'images/pcready.png',
+            link: 'https://pcready.pages.dev/',
+        },
+        {
             title: 'Ultimate PC Simulator',
             description: 'Simulador 2D de ensamblaje de PCs donde los jugadores construyen computadoras usando componentes interactivos, sistema de compatibilidad y UI avanzada, inspirado en hardware real.',
             technologies: ['Unity', 'C#', 'Figma', 'Adobe XD', 'UI/UX'],
