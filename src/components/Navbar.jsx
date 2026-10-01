@@ -10,6 +10,7 @@ const Navbar = () => {
     const [isMobileProjectsOpen, setIsMobileProjectsOpen] = useState(false);
 
     const projectLinks = [
+        { name: 'PCReady', href: 'https://pcready.pages.dev/' },
         { name: 'Ultimate PC Simulator', href: '/projects/ultimate-pc-simulator' },
 
         { name: 'Urban Safe', href: '/projects/urban-safe' },
@@ -179,8 +180,9 @@ const Navbar = () => {
                                                     key={project.name}
                                                     href={project.href}
                                                     onClick={(e) => {
-                                                        e.preventDefault();
                                                         setIsProjectsOpen(false);
+                                                        if (project.href.startsWith('https://')) return;
+                                                        e.preventDefault();
                                                         if (project.href.startsWith('/')) {
                                                             navigate(project.href);
                                                         } else {
@@ -302,8 +304,9 @@ const Navbar = () => {
                                                                 key={project.name}
                                                                 href={project.href}
                                                                 onClick={(e) => {
-                                                                    e.preventDefault();
                                                                     setIsMobileMenuOpen(false);
+                                                                    if (project.href.startsWith('https://')) return;
+                                                                    e.preventDefault();
                                                                     if (project.href.startsWith('/')) {
                                                                         navigate(project.href);
                                                                     } else {
