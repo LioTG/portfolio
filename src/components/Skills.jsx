@@ -59,27 +59,29 @@ const SkillCategoryCard = ({ category, categoryIndex }) => {
                                 color: category.color,
                                 fontWeight: 600,
                             }}>
-                                {skill.level}%
+                                {skill.label ?? `${skill.level}%`}
                             </span>
                         </div>
-                        <div style={{
-                            height: '6px',
-                            background: 'rgba(255, 255, 255, 0.05)',
-                            borderRadius: 'var(--border-radius-full)',
-                            overflow: 'hidden',
-                        }}>
-                            <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: `${skill.level}%` }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                                style={{
-                                    height: '100%',
-                                    background: category.color,
-                                    borderRadius: 'var(--border-radius-full)',
-                                }}
-                            />
-                        </div>
+                        {skill.level !== undefined && (
+                            <div style={{
+                                height: '6px',
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                borderRadius: 'var(--border-radius-full)',
+                                overflow: 'hidden',
+                            }}>
+                                <motion.div
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: `${skill.level}%` }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
+                                    style={{
+                                        height: '100%',
+                                        background: category.color,
+                                        borderRadius: 'var(--border-radius-full)',
+                                    }}
+                                />
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
@@ -102,6 +104,7 @@ const Skills = () => {
                 { name: 'Java', level: 60 },
                 { name: 'Angular', level: 50 },
                 { name: 'Vue', level: 50 },
+                { name: 'Flutter / Dart', label: 'En práctica' },
             ],
         },
         {

@@ -173,8 +173,8 @@ const Projects = () => {
         },
         {
             title: 'Ultimate PC Simulator',
-            description: 'Simulador 2D de ensamblaje de PCs donde los jugadores construyen computadoras usando componentes interactivos, sistema de compatibilidad y UI avanzada, inspirado en hardware real.',
-            technologies: ['Unity', 'C#', 'Figma', 'Adobe XD', 'UI/UX'],
+            description: 'Simulador de taller de PCs para Android disponible en Google Play. Ensambla y diagnostica equipos, compra hardware y completa pedidos de clientes.',
+            technologies: ['Unity 6', 'C#', 'Android', 'Google Play', 'UI/UX'],
             role: 'Game Developer & Designer',
             gradient: 'var(--gradient-primary)',
             image: import.meta.env.BASE_URL + 'images/ultimate-pc-simulator.png',
@@ -210,8 +210,8 @@ const Projects = () => {
         },
         {
             title: 'Entreprenly',
-            description: 'Plataforma para conectar startups. En el curso de Aplicaciones para Dispositivos Móviles estamos llevando el dashboard web a Android, manteniendo sus funcionalidades y el backend existente. Me encargo del bounded context Profile con Kotlin y Jetpack Compose.',
-            technologies: ['Angular', 'TypeScript', 'Java', 'Vue', 'JavaScript', 'C#', 'DDD', 'Android Studio', 'Kotlin', 'Jetpack Compose'],
+            description: 'Plataforma para conectar startups. En el curso de Aplicaciones para Dispositivos Móviles estamos llevando el dashboard web a Android, manteniendo sus funcionalidades y el backend existente. Me encargo del módulo de perfil con Kotlin y Jetpack Compose y actualmente aplico Flutter y Dart en el desarrollo móvil de Entreprenly.',
+            technologies: ['Angular', 'TypeScript', 'Java', 'Vue', 'JavaScript', 'C#', 'DDD', 'Android Studio', 'Kotlin', 'Jetpack Compose', 'Flutter', 'Dart'],
             role: 'Full Stack Developer',
             gradient: 'var(--gradient-primary)',
             image: import.meta.env.BASE_URL + 'images/entreprenly.png',

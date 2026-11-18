@@ -283,7 +283,7 @@ const UltimatePC = () => {
                         </h1>
 
                         <div className="tech-stack">
-                            <TechBadge icon={Box} name="Unity 2D" color="#ffffff" />
+                            <TechBadge icon={Box} name="Unity 6" color="#ffffff" />
                             <TechBadge icon={Code} name="C#" color="#9b4993" />
                             <TechBadge icon={SiAdobexd} name="Adobe XD" color="#FF61F6" />
                         </div>
@@ -295,17 +295,17 @@ const UltimatePC = () => {
                                 Sobre el Proyecto
                             </h3>
                             <p className="project-description">
-                                Simulador 2D de ensamblaje de PCs donde los jugadores construyen computadoras usando componentes interactivos, sistema de compatibilidad y UI avanzada. Inspirado en la complejidad del hardware real pero adaptado a una experiencia de juego fluida y educativa.
+                                Simulador de gestión de un taller de PCs para Android, lanzado en Google Play el 17 de noviembre de 2026. Compra piezas, comprueba su compatibilidad, arma equipos y completa pedidos según el presupuesto y los requisitos de cada cliente.
                             </p>
 
                             <div className="action-buttons">
-                                <a href="https://xd.adobe.com/view/1d7f1f0e-695b-455e-a29c-79fbd096e3b5-482c/?fullscreen&hints=off" target="_blank" className="btn-prototype">
+                                <a href="https://play.google.com/store/apps/details?id=com.lstudios.ultimatepcsimulator" target="_blank" rel="noopener noreferrer" className="btn-prototype">
                                     <ExternalLink size={20} />
-                                    Jugar Prototipo
+                                    Ver en Google Play
                                 </a>
-                                <a href="https://discord.gg/AyVvX6Qe4Y" target="_blank" className="btn-help">
+                                <a href="https://discord.gg/AyVvX6Qe4Y" target="_blank" rel="noopener noreferrer" className="btn-help">
                                     <FaDiscord size={20} />
-                                    Ayuda
+                                    Comunidad en Discord
                                 </a>
                             </div>
                         </div>
@@ -316,8 +316,8 @@ const UltimatePC = () => {
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
                             <img
-                                src={`${import.meta.env.BASE_URL}images/ultimate-pc-simulator.png`}
-                                alt="Ultimate PC Simulator Gameplay"
+                                src={`${import.meta.env.BASE_URL}images/ultimate-pc-workshop.webp`}
+                                alt="Taller de ensamblaje de Ultimate PC Simulator"
                                 className="project-image"
                             />
                         </motion.div>
@@ -337,8 +337,8 @@ const UltimatePC = () => {
                         >
                             <FeatureCard
                                 icon={Wrench}
-                                title="Ensamblaje de PCs en 2D"
-                                description="Monta gabinetes, placas, CPUs, RAM y GPUs en una interfaz 2D guiada, inspirada en el armado real de PCs."
+                                title="Ensamblaje y diagnóstico"
+                                description="Instala componentes, aplica pasta térmica, conecta los cables y comprueba que el equipo arranque."
                             />
                             <FeatureCard
                                 icon={Cpu}
@@ -366,7 +366,7 @@ const UltimatePC = () => {
                             Mi rol en el proyecto
                         </h3>
                         <p className="project-description">
-                            Lidero el desarrollo de Ultimate PC Simulator, definiendo la experiencia del jugador, diseñando la interfaz y programando los sistemas principales en Unity/C#, incluyendo compatibilidad de hardware, flujo de compra, pedidos de los clientes y contenido informativo.
+                            Como fundador y desarrollador líder de L.Studios, diseño la experiencia del jugador y desarrollo los sistemas de ensamblaje, compatibilidad, pedidos y guardado en Unity y C#. Preparé la versión para Android, integré las compras de Google Play y coordiné las pruebas beta y el lanzamiento.
                         </p>
                     </div>
                 </motion.div>
